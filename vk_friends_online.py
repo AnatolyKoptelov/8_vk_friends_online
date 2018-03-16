@@ -16,7 +16,7 @@ def get_user_password():
     return getpass.getpass(prompt='Input your vk.com password: ')
 
 
-def get_friends_list(login, password):
+def get_friends_online(login, password):
     session = vk.AuthSession(
         app_id=APP_ID,
         user_login=login,
@@ -24,23 +24,26 @@ def get_friends_list(login, password):
         scope='friends',
     )
     api = vk.API(session)
-    return api.friends.get(v=API_VERSION, fields='nickname')['items']
+    return api.users.get(
+        v=API_VERSION,
+        user_ids=str(api.friends.getOnline(v=API_VERSION))[1:-1],
+        fields='nickname',
+    )
 
 
-def output_friends_online_to_console(friends_list):
+def output_friends_to_console(friends_list):
     for friend in friends_list:
-        if friend['online']:
-            print('{} {} is online now'.format(
-                friend['first_name'],
-                friend['last_name'],
-            ))
+        print('{} {} is online now'.format(
+            friend['first_name'],
+            friend['last_name'],
+        ))
 
 
 if __name__ == '__main__':
     login = get_user_login()
     password = get_user_password()
     try:
-        friends_list = get_friends_list(login, password)
+        friends_online = get_friends_online(login, password)
     except vk.exceptions.VkAuthError:
         sys.exit('Authorization failed')
     except requests.exceptions.RequestException as error:
@@ -48,4 +51,4 @@ if __name__ == '__main__':
             'Cannot connect to vk.com api service',
             error,
         ))
-    output_friends_online_to_console(friends_list)
+    output_friends_to_console(friends_online)
