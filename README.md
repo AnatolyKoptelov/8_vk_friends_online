@@ -1,6 +1,7 @@
 # Watcher of Friends Online
 
-[TODO. There will be project description]
+Application for getting [VC.COM](https://vk.com) friends list in console output. Output contains first and last names of your friends.
+For using this application input your [VC.COM](https://vk.com) login and password.
 
 # How to Install
 
@@ -11,6 +12,16 @@ pip install -r requirements.txt # alternatively try pip3
 ```
 
 Remember, it is recommended to use [virtualenv/venv](https://devman.org/encyclopedia/pip/pip_virtualenv/) for better isolation.
+
+# QuickStart
+
+Run, using command line:
+```bash
+$ python vk_friends_online.py 
+Enter your vk.com login: <Your login>
+Input your vk.com password: 
+<your friend first name> <your friend last name> is online now
+```
 
 # Project Goals
 
