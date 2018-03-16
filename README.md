@@ -1,7 +1,7 @@
 # Watcher of Friends Online
 
-Application for getting [VC.COM](https://vk.com) friends list in console output. Output contains first and last names of your friends.
-For using this application input your [VC.COM](https://vk.com) login and password.
+Application for getting [VK.COM](https://vk.com) friends list in console output. Output contains first and last names of your friends.
+For using this application input your [VK.COM](https://vk.com) login and password.
 
 # How to Install
 
